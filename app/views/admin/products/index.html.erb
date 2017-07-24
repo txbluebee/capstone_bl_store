@@ -1,0 +1,27 @@
+<%= render 'layouts/navbar' %>
+<%= render 'layouts/header' %>
+
+
+<div class="album text-muted">
+  <div class="container">
+    <p><%= link_to 'add product', new_admin_product_path %></p>
+    <div class="row">
+      <% if @products.any? %>
+        <% @products.each do |product|  %>
+        <div class="col-sm-4 mb-3">
+          <div class="card">
+            <%= image_tag product.image.url(:medium) %>
+            <p class="card-text"> <b><%= product.title %></b></p>
+            <span>
+              <%= link_to 'Edit', edit_admin_product_path(product) %> |
+              <%= link_to 'Delete', admin_product_path(product), :method => 'delete', :data => {:confirm => 'You Sure?'} %>
+            </span> 
+          </div>
+        </div>
+        <% end %>
+      <% else %>
+        <h3>No Products added yet.</h3>
+      <% end %>
+    </div>
+  </div>
+</div>

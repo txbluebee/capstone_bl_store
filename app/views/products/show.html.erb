@@ -1,0 +1,9 @@
+<%= render 'layouts/navbar' %>
+<%= render 'layouts/header' %>
+<div class="container">
+  <%= image_tag @product.image.url(:medium) %>
+  <h1><%= @product.title %> | $<%= @product.price %></h1>
+  <p>
+    <%= @product.description %>
+  </p>
+</div>
