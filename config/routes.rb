@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'carts/show'
+
   namespace :admin do
     get 'products/index'
   end
@@ -12,10 +14,18 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index, :show] do
+    member do
+      post :add_to_cart
+    end
+  end
+
+  resources :cart_items
 
   namespace :admin do
     resources :products
   end
+
+  resource :cart, only: [:show]
 
 end
