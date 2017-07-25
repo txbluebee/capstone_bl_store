@@ -1,5 +1,7 @@
 <%= render 'layouts/navbar' %>
 <%= render 'layouts/header' %>
+<%= render 'layouts/flashes' %>
+
 <div class="container">
   <%= image_tag @product.image.url(:medium) %>
   <h1><%= @product.title %> | $<%= @product.price %></h1>

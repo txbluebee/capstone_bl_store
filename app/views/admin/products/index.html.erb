@@ -2,6 +2,7 @@
 <%= render 'layouts/header' %>
 
 
+
 <div class="album text-muted">
   <div class="container">
     <p><%= link_to 'add product', new_admin_product_path %></p>
@@ -15,7 +16,7 @@
             <span>
               <%= link_to 'Edit', edit_admin_product_path(product) %> |
               <%= link_to 'Delete', admin_product_path(product), :method => 'delete', :data => {:confirm => 'You Sure?'} %>
-            </span> 
+            </span>
           </div>
         </div>
         <% end %>
