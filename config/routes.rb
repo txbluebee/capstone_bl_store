@@ -29,6 +29,13 @@ Rails.application.routes.draw do
   resource :cart, only: [:show] do
     collection do
       delete :clean
+      post :checkout
+    end
+  end
+
+  resources :orders do
+    member do
+      post :pay_with_stripe
     end
   end
 

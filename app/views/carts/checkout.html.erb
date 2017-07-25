@@ -1,0 +1,33 @@
+<%= render 'layouts/navbar' %>
+<%= render 'layouts/header' %>
+<%= render 'layouts/flashes' %>
+
+<div class="container">
+  <h1>Your Order: </h1>
+  <% current_cart.cart_items.each do |cart_item| %>
+    <%= image_tag cart_item.product.image.url(:thumb) %> <br>
+    <%= cart_item.product.title%>/ <%= number_to_currency cart_item.product.price %>
+    <p> Quantity: <%= cart_item.quantity %></p>
+    <p> Total: <%= number_to_currency cart_item.quantity * cart_item.product.price %></P>
+  <% end %>
+
+  <div class="total-order">
+    Your Order Total: <%= number_to_currency render_cart_total_price(current_cart) %>
+  </div>
+  <hr class='mx-3'>
+  <div class="order-form">
+    <div class="row">
+      <div class="col-lg-6">
+        <%= simple_form_for @order do |f| %>
+          <legend>Payment Info</legend>
+          <%= f.input :billing_name %>
+          <%= f.input :billing_address %>
+          <%= f.input :shipping_name %>
+          <%= f.input :shipping_address %>
+          <%= f.submit "Place Your Order", class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
