@@ -26,6 +26,10 @@ Rails.application.routes.draw do
     resources :products
   end
 
-  resource :cart, only: [:show]
+  resource :cart, only: [:show] do
+    collection do
+      delete :clean
+    end
+  end
 
 end

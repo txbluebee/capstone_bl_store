@@ -18,9 +18,6 @@ class CartItemsController < ApplicationController
     redirect_to cart_path, warning: "successfully remove #{@product.title} from the cart"
   end
 
-
-
-
   private
 
   def cart_item_params

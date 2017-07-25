@@ -8,5 +8,9 @@
   <p>
     <%= @product.description %>
   </p>
-  <%= link_to 'Add To Cart', add_to_cart_product_path(@product), :method => :post, class: 'btn btn-primary' %>
+  <% if @product.quantity.present? && @product.quantity > 0 %>
+    <%= link_to 'Add To Cart', add_to_cart_product_path(@product), :method => :post, class: 'btn btn-primary' %>
+  <% else %>
+    <p> The product is out of stock. </p>
+  <% end %>
 </div>
