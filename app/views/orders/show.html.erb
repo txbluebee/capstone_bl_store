@@ -1,3 +1,15 @@
 <%= render 'layouts/navbar' %>
 <%= render 'layouts/header' %>
 <%= render 'layouts/flashes' %>
+<div class="container">
+  <div class="product-list">
+    <%  @product_lists.each do |product_list| %>
+    <p><%= product_list.product_name %></p>
+    <p><%= number_to_currency product_list.product_price %></p>
+    <p><%= product_list.product_quantity %></p>
+    <hr>
+    <% end  %>
+  </div>
+  <h2>Total: <%= number_to_currency @order.total %></h2>
+  <%= link_to 'Pay', pay_with_stripe_order_path(@order), method: 'post', class: 'btn btn-primary' %>
+</div>
