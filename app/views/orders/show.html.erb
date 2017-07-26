@@ -12,6 +12,7 @@
   </div>
   <h2>Total: <%= number_to_currency @order.total %></h2>
   <!-- <%= link_to 'Pay With Card', pay_with_stripe_order_path(@order), method: 'post', class: 'btn btn-primary' %> -->
+  <%= link_to 'Pay', new_charge_path, class: 'btn btn-success'%>
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
         Stripe.setPublishableKey('PUBLISHABLE_KEY');
         data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
