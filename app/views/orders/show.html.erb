@@ -10,13 +10,18 @@
     <hr>
     <% end  %>
   </div>
+  <div class="shipping-info">
+    <p>Billed to: <%= @order.billing_name %> </p>
+    <p>Billing Address: <%= @order.billing_address %></p>
+    <h5>Ship to: <%= @order.shipping_name %> </h5>
+    <p>Shipping Address: <%= @order.shipping_address %></p>
+  </div>
   <h2>Total: <%= number_to_currency @order.total %></h2>
-  <!-- <%= link_to 'Pay With Card', pay_with_stripe_order_path(@order), method: 'post', class: 'btn btn-primary' %> -->
-  <%= link_to 'Pay', new_charge_path, class: 'btn btn-success'%>
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-        Stripe.setPublishableKey('PUBLISHABLE_KEY');
-        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-        data-description="Total Charge"
-        data-amount=" <%= @order.total*100 %>   "
-        data-locale="auto"></script>
+
+  <% if !@order.is_paid? %>
+    <%= link_to 'Pay with Card', pay_with_credit_card_order_path(@order), method: 'post', class: 'btn btn-danger'%>
+    <%= link_to 'Pay with Paypal', pay_with_paypal_order_path(@order), method: 'post', class: 'btn btn-warning'%>
+  <% else %>
+    <p>This order is already paid with <%= @order.payment_method %>!</p>
+  <% end %>
 </div>

@@ -27,8 +27,18 @@ class OrdersController < ApplicationController
     @product_lists = @order.product_lists
   end
 
-  def pay_with_stripe
+  def pay_with_credit_card
+    @order = Order.find(params[:id])
+    @order.set_payment_with!('credit card')
+    @order.pay!
+    redirect_to order_path(@order)
+  end
 
+  def pay_with_paypal
+    @order = Order.find(params[:id])
+    @order.set_payment_with!('Paypal')
+    @order.pay!
+    redirect_to order_path(@order)
   end
 
 

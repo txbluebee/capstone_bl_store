@@ -35,7 +35,8 @@ Rails.application.routes.draw do
 
   resources :orders do
     member do
-      post :pay_with_stripe
+      post :pay_with_credit_card
+      post :pay_with_paypal
     end
   end
 
