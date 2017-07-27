@@ -1,3 +1,20 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.intro-box {
+  background-image: url('cover.jpeg');
+  height: 50rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  h1 {
+    padding: 2rem 5rem;
+    color: white;
+    font-size: 5rem;
+    background-color: rgba(177, 242, 245, 0.3)
+  }
+}

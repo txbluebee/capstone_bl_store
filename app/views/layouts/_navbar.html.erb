@@ -68,7 +68,7 @@
           <!--=== Shopping Cart ===-->
           <ul class='nav navbar-nav  navbar-right'>
             <li class="divider" role="separator"></li>
-            <li><%= link_to '/cart' do %> Cart <i class='fa fa-shopping-cart'></i> (0)<% end %></li> <!-- Shopping cart -->
+            <li><%= link_to '/cart' do %> Cart <i class='fa fa-shopping-cart'></i> (<%= current_cart.cart_items.count %>)<% end %></li> <!-- Shopping cart -->
             <!-- Sign Up / Sign In -->
 
             <!--=== User Drop Down Menu ===-->

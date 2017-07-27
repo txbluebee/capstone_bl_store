@@ -1,2 +1,58 @@
 <%= render 'layouts/navbar' %>
-<%= render 'layouts/header' %>
+<div class="welcome-box">
+  <!--===== Carousel =====-->
+  <section class="intro-box">
+    <div class="row">
+      <div class="col-md-12">
+        <div id="intro" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#intro" data-slide-to="0" class="active"></li>
+            <li data-target="#intro" data-slide-to="1"></li>
+            <li data-target="#intro" data-slide-to="2"></li>
+          </ol>
+
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <%= link_to '#', target: "_blank" do %> <!-- 图片连结，点击另开视窗 -->
+                <%= image_tag("intro_1.jpg") %> <!-- 图片位置 -->
+                <div class="carousel-caption">
+                  <h3>品味生活</h3> <!-- 标题 -->
+                  <p>打造优质烹饪环境，让生活更有趣</p> <!-- 内文 -->
+                </div>
+              <% end %>
+            </div>
+            <div class="item">
+              <%= link_to '#', target: "_blank" do %>
+                <%= image_tag("intro_2.jpg") %>
+                <div class="carousel-caption">
+                  <h3>创造美食</h3>
+                  <p>最新创意食谱，每天都充满变化</p>
+                </div>
+              <% end %>
+            </div>
+            <div class="item">
+              <%= link_to '#', target: "_blank" do %>
+                <%= image_tag("intro_3.jpg") %>
+                <div class="carousel-caption">
+                  <h3>精选厨具</h3>
+                  <p>优质进口厨具，做菜更加便利</p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+
+          <!--===== 换页按钮 =====-->
+          <a class="left carousel-control" href="#intro" role="button" data-slide="prev">
+            <span class="fa fa-angle-left" aria-hidden="true"></span> <!-- 左侧按钮图示 -->
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#intro" role="button" data-slide="next">
+            <span class="fa fa-angle-right" aria-hidden="true"></span> <!-- 右侧按钮图示 -->
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
