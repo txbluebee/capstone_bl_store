@@ -1,0 +1,11 @@
+<%= render 'layouts/navbar' %>
+<%= render 'layouts/header' %>
+<%= render 'layouts/flashes' %>
+
+<div class="container">
+  <div class="col-sm-6">
+    <h2>Username: <%= @user.username %></h2>
+    <h2>Email: <%= @user.email %></h2>
+    <%= link_to 'edit user info', edit_user_registration_path, class: 'btn btn-primary' %>
+  </div>
+</div>

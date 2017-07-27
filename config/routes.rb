@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'users/show'
+
   get 'carts/show'
 
   namespace :admin do
@@ -10,9 +12,15 @@ Rails.application.routes.draw do
     get 'products/edit'
   end
 
-  root 'home#index'
+  root 'products#index'
 
   devise_for :users
+
+  resources :users, only: [:show] do
+    member do
+      get :orders
+    end
+  end
 
   resources :products, only: [:index, :show] do
     member do

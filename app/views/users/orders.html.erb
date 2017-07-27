@@ -1,0 +1,26 @@
+<%= render 'layouts/navbar' %>
+<%= render 'layouts/header' %>
+
+<div class="container">
+  <div class="col-sm-6">
+    <h1>Order History</h1>
+    <% if @user.orders.any? %>
+      <% @orders.each do |order|  %>
+      <div class="order-box">
+        <h5>Order ID: <%= order.id %> </h5>
+        <h5>Order by:<%= order.shipping_name %></h5>
+        <h5>Order Total: <%= number_to_currency order.total %></h5>
+        <h5>payment_method: <%= order.payment_method %></h5>
+        <p>Order Product Details</p>
+        <% order.product_lists.each do |product_list| %>
+          <p>Product: <%= product_list.product_name %></p>
+          <p>Price: <%= number_to_currency product_list.product_price %></p>
+        <% end %>
+        <hr>
+      </div>
+      <% end %>
+    <% else %>
+        <p>You havent ordered anything yet!</p>
+    <% end %>
+  </div>
+</div>

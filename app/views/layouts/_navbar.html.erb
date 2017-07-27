@@ -64,6 +64,9 @@
             <li><%= link_to('Products', products_path) %></li>
             <li><%= link_to('Clearance', '#') %></li>
             <li><%= link_to('About Us', '#') %></li>
+            <% if current_user&.is_admin %>
+              <li><%= link_to 'Manage Products', admin_products_index_path %></li>
+            <% end %>
           </ul>
           <!--=== Shopping Cart ===-->
           <ul class='nav navbar-nav  navbar-right'>
@@ -78,12 +81,12 @@
                   Hello, <%= current_user.username %><b class='caret'></b>
                 </a>
                 <ul class='dropdown-menu'>
-                  <% if current_user.is_admin %>
+                  <!-- <% if current_user.is_admin %>
                     <li> <%= link_to('Admin Menu', '#') %> </li>
                     <li class="divider"> </li>
-                  <% end %>
-                  <li> <%= link_to('My account', '#') %> </li>
-                  <li> <%= link_to('My order', '#') %> </li>
+                  <% end %> -->
+                  <li> <%= link_to 'My account', user_path(current_user) %> </li>
+                  <li> <%= link_to 'My order', orders_user_path(current_user) %> </li>
                   <li class="divider"> </li>
                   <li> <%= link_to "Sign Out", destroy_user_session_path, :method => 'delete'%> </li>
                 </ul>
