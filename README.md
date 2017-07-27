@@ -45,6 +45,9 @@ As a user, I'd like my current shopping cart to be associated with my account so
 
 * `rails server`
 * Visit your app at [http://localhost:3000](http://localhost:3000).
+* Login as Admin User :
+* `email: admin@gmail.com`
+* `password: 123456`
 
 ## Technologies Used
 
