@@ -1,112 +1,52 @@
-<!-- <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-0">
+  <%= link_to root_path, class: "navbar-brand" do %>
+    <i class="fa fa-smile-o"></i> B & L
+  <% end %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">B & L</a>
-
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav mr-auto">
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="d-flex justify-content-lg-between">
+      <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/products">products</a>
+        <a class="nav-link" href="/products">Products</a>
       </li>
       <% if current_user&.is_admin %>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin Menu</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="/admin/products">View Products</a>
-          <a class="dropdown-item" href="/admin/users">view Users</a>
-        </div>
-      </li>
+        <li class="nav-item"><%= link_to 'Manage Products', admin_products_index_path, class: "nav-link mr-auto" %></li>
       <% end %>
     </ul>
-    <span class="navbar-brand">
 
-    </span>
-    <span class="navbar-brand">
-      <a href="/cart">cart: (<%= current_cart.cart_items.count %>)</a> |
+    <ul class="navbar-nav mr-5">
+      <!--=== Shopping Cart ===-->
+      <li class: "nav-link" ><%= link_to '/cart', class: "nav-link mr-5" do %> Cart <i class='fa fa-shopping-cart'></i> (<%= current_cart.cart_items.count %>)<% end %></li> 
+      <!-- Sign Up / Sign In -->
+
+      <!--=== User Drop Down Menu ===-->
       <% if user_signed_in? %>
-        <%= current_user.email %> | <%= link_to "Sign Out", destroy_user_session_path, :method => 'delete'%>
+        <li class='dropdown nav-item'>
+          <a href='#' class='dropdown-toggle nav-link' data-toggle='dropdown'>
+            Hello, <%= current_user.username %>
+          </a>
+          <div class='dropdown-menu dropdown-menu-right'>
+            <% if current_user.is_admin %>
+              <%= link_to('Admin Menu', '#') %> 
+                <div class="dropdown-divider"></div>
+              <% end %>
+            <%= link_to 'My account', user_path(current_user), class: 'dropdown-item' %> 
+            <%= link_to 'My order', orders_user_path(current_user), class: 'dropdown-item' %> 
+            <div class="dropdown-divider"></div>
+            <%= link_to "Sign Out", destroy_user_session_path, :method => 'delete', class: 'dropdown-item' %> 
+          </div>
+        </li>
       <% else %>
-        <%= link_to 'Sign Up', new_user_registration_path %> |  <%= link_to 'Sign In', new_user_session_path %>
+        <li><%= link_to 'Sign Up', new_user_registration_path %><li>
+        <li><%= link_to 'Sign In', new_user_session_path %></li>
       <% end %>
-    </span>
-  </div>
-</nav> -->
-
-
-<div class="row">
-  <div class="col-md-12">
-    <% if current_page?('/') %>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
-    <% else %>
-      <div class="navbar navbar-default navbar-fixed-top scroll_navbar" role="navigation">
-    <% end %>
-      <div class="container">
-        <div class="navbar-header">
-          <!--=== Drop down menu on the right ===-->
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-4" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <!--===== Logo =====-->
-          <%= link_to root_path, class: "navbar-brand logo-box scroll" do %>
-            <i class="fa fa-smile-o"></i> B & L
-          <% end %>
-        </div>
-        <div class="collapse navbar-collapse top-nav" id="menu-4">
-          <!--=== Website links ===-->
-          <ul class="nav navbar-nav navbar-left">
-            <li><%= link_to('Products', products_path) %></li>
-            <li><%= link_to('Clearance', '#') %></li>
-            <li><%= link_to('About Us', '#') %></li>
-            <% if current_user&.is_admin %>
-              <li><%= link_to 'Manage Products', admin_products_index_path %></li>
-            <% end %>
-          </ul>
-          <!--=== Shopping Cart ===-->
-          <ul class='nav navbar-nav  navbar-right'>
-            <li class="divider" role="separator"></li>
-            <li><%= link_to '/cart' do %> Cart <i class='fa fa-shopping-cart'></i> (<%= current_cart.cart_items.count %>)<% end %></li> <!-- Shopping cart -->
-            <!-- Sign Up / Sign In -->
-
-            <!--=== User Drop Down Menu ===-->
-            <% if user_signed_in? %>
-              <li class='dropdown'>
-                <a href='#' class='dropdown-toggle' data-toggle='dropdown'>
-                  Hello, <%= current_user.username %><b class='caret'></b>
-                </a>
-                <ul class='dropdown-menu'>
-                  <!-- <% if current_user.is_admin %>
-                    <li> <%= link_to('Admin Menu', '#') %> </li>
-                    <li class="divider"> </li>
-                  <% end %> -->
-                  <li> <%= link_to 'My account', user_path(current_user) %> </li>
-                  <li> <%= link_to 'My order', orders_user_path(current_user) %> </li>
-                  <li class="divider"> </li>
-                  <li> <%= link_to "Sign Out", destroy_user_session_path, :method => 'delete'%> </li>
-                </ul>
-              </li>
-            <% else %>
-              <li><%= link_to 'Sign Up', new_user_registration_path %><li>
-              <li><%= link_to 'Sign In', new_user_session_path %></li>
-            <% end %>
-            </ul>
-          <!--===== Search Bar =====-->
-            <!-- <div class="input-group search-box">
-              <input type="text" class="form-control" name="keyword" placeholder="search products" value="">
-              <div class="input-group-btn">
-                <button class="btn btn-default" type="submit">
-                  <span><i class="fa fa-search"></i></span>
-                </button>
-              </div>
-            </div> -->
-        </div>
-      </div>
+    </ul>
     </div>
+
   </div>
-</div>
+</nav>
+
+
+
