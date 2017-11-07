@@ -37,6 +37,7 @@ gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'b
 gem 'faker'
 gem 'devise'
 gem 'paperclip'
+gem 'aws-sdk', '~> 2.3'
 gem 'simple_form'
 gem 'font-awesome-rails'
 
