@@ -2,23 +2,56 @@
 <%= render 'layouts/header' %>
 <%= render 'layouts/flashes' %>
 
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 col-md-3">
+      <div class="list-group sticky-top">
+        <a href="#" class="list-group-item active">Clothes</a>
+        <a href="#" class="list-group-item">Shoes</a>
+        <a href="#" class="list-group-item">Hats</a>
+        <a href="#" class="list-group-item">Clearance</a>
+        <a href="#" class="list-group-item">Other</a>
+      </div>
+    </div>
+    <div class="col-12 col-md-9">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
+            <span class="input-group-btn">
+              <button class="btn btn-success" type="button">Search</button>
+            </span>
+          </div>
+        </div>
+      </div>  
+      <div class="row mt-4">
+        <% if @products.any? %>
+          <% @products.each do |product|  %>
+            <div class="col-md-6 col-lg-4 mb-5">
+                <%= link_to product, class: 'text-dark' do %>
+                  <div class="card h-100">
+                    <%= image_tag product.image.url(:medium), class: 'card-img-top' %>
+                    <div class="card-body">
+                    <h4 class="card-text"><%= product.title %></h4>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <h3>No Products added yet.</h3>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div class="album text-muted">
   <div class="container">
     <div class="row">
-      <% if @products.any? %>
-        <% @products.each do |product|  %>
-        <div class="col-sm-4 mb-3">
-          <div class="card">
-            <%= link_to product do %>
-              <%= image_tag product.image.url(:medium) %>
-                <p class="card-text"> <b><%= product.title %></b></p>
-            <% end %>
-          </div>
-        </div>
-        <% end %>
-      <% else %>
-        <h3>No Products added yet.</h3>
-      <% end %>
+
     </div>
   </div>
 </div>

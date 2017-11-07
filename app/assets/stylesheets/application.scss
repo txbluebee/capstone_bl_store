@@ -6,3 +6,32 @@
 @import "font-awesome";
 @import "products.scss";
 @import "home";
+
+
+@mixin medium-screen{
+  @media (max-width: 991px) {
+    @content;
+   }
+}
+
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.header {
+  background: url('cover.jpg') no-repeat center center;
+  background-size: cover;
+  min-height: 50vh;
+  .header-caption {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 3rem;
+  }
+}
+
+.navbar {
+  @include medium-screen(){
+
+  }
+}

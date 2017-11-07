@@ -3,14 +3,46 @@
 <%= render 'layouts/flashes' %>
 
 <div class="container">
-  <%= image_tag @product.image.url(:medium) %>
-  <h1><%= @product.title %> | $<%= @product.price %></h1>
-  <p>
-    <%= @product.description %>
-  </p>
-  <% if @product.quantity.present? && @product.quantity > 0 %>
-    <%= link_to 'Add To Cart', add_to_cart_product_path(@product), :method => :post, class: 'btn btn-primary' %>
-  <% else %>
-    <p> The product is out of stock. </p>
-  <% end %>
+  <div class="row">
+    <div class="col-12 col-sm-7">
+      <div class="card border-0">
+        <%= image_tag @product.image.url(:medium), class: 'card-img-top w-75' %>
+        <div class="card-body">
+          <h1 class="card-title"><%= @product.title %> </h1>
+          <p class="card-text"><%= @product.description %></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-5">
+      <div class="mt-5 p-5 border border-secondary">
+        <p class="font-weight-bold" style="font-size: 2.2rem"><u><%= @product.title %></u></h4>
+        <div class="my-4">
+          <p class="h4"><del>Market Price $100.00</del><p>
+          <span class="text-danger display-4">Sales Price: $<%= @product.price %></span>
+        </div>
+        <div>
+          <span class="h4">Size: </span>
+          <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-info active">
+              <input type="radio" name="options" id="option1" autocomplete="off" checked>S
+            </label>
+            <label class="btn btn-info">
+              <input type="radio" name="options" id="option2" autocomplete="off">M
+            </label>
+            <label class="btn btn-info">
+              <input type="radio" name="options" id="option3" autocomplete="off">L
+            </label>
+            <label class="btn btn-info">
+              <input type="radio" name="options" id="option3" autocomplete="off">XL
+            </label>
+          </div>
+        </div>
+        <% if @product.quantity.present? && @product.quantity > 0 %>
+          <%= link_to 'Add To Cart', add_to_cart_product_path(@product), :method => :post, class: 'btn btn-primary btn-block mt-5' %>
+        <% else %>
+          <p> The product is out of stock. </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

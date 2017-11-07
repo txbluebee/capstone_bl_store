@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-0">
+<nav class="navbar navbar-expand-md navbar-light bg-light mb-0">
   <%= link_to root_path, class: "navbar-brand" do %>
     <i class="fa fa-smile-o"></i> B & L
   <% end %>
@@ -6,7 +6,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <div class="d-flex justify-content-lg-between">
+    <div class="d-md-flex justify-content-md-between">
       <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" href="/products">Products</a>
@@ -15,10 +15,9 @@
         <li class="nav-item"><%= link_to 'Manage Products', admin_products_index_path, class: "nav-link mr-auto" %></li>
       <% end %>
     </ul>
-
     <ul class="navbar-nav mr-5">
       <!--=== Shopping Cart ===-->
-      <li class: "nav-link" ><%= link_to '/cart', class: "nav-link mr-5" do %> Cart <i class='fa fa-shopping-cart'></i> (<%= current_cart.cart_items.count %>)<% end %></li> 
+      <li class: "nav-link" ><%= link_to '/cart', class: "nav-link" do %> Cart <i class='fa fa-shopping-cart'></i> (<%= current_cart.cart_items.count %>)<% end %></li> 
       <!-- Sign Up / Sign In -->
 
       <!--=== User Drop Down Menu ===-->
@@ -29,7 +28,7 @@
           </a>
           <div class='dropdown-menu dropdown-menu-right'>
             <% if current_user.is_admin %>
-              <%= link_to('Admin Menu', '#') %> 
+                <%= link_to 'Admin Menu', admin_products_index_path, class: "dropdown-item" %>
                 <div class="dropdown-divider"></div>
               <% end %>
             <%= link_to 'My account', user_path(current_user), class: 'dropdown-item' %> 
@@ -39,14 +38,10 @@
           </div>
         </li>
       <% else %>
-        <li><%= link_to 'Sign Up', new_user_registration_path %><li>
-        <li><%= link_to 'Sign In', new_user_session_path %></li>
+        <li class="nav-item"><%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %><li>
+        <li class="nav-item"><%= link_to 'Sign In', new_user_session_path, class: 'nav-link' %></li>
       <% end %>
     </ul>
-    </div>
-
   </div>
 </nav>
-
-
 
