@@ -17,18 +17,18 @@
     <div class="col-12 col-md-9">
       <div class="row">
         <div class="col-lg-6">
-          <div class="input-group">
+          <div class="input-group mt-3 mt-md-0 ">
             <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
             <span class="input-group-btn">
-              <button class="btn btn-success" type="button">Search</button>
+              <button class="btn btn-outline-success" type="button">Search</button>
             </span>
           </div>
         </div>
-      </div>  
+      </div>
       <div class="row mt-4">
         <% if @products.any? %>
           <% @products.each do |product|  %>
-            <div class="col-md-6 col-lg-4 mb-5">
+            <div class="col-md-6 col-lg-4 mb-5 d-flex justify-content-center">
                 <%= link_to product, class: 'text-dark' do %>
                   <div class="card h-100">
                     <%= image_tag product.image.url(:medium), class: 'card-img-top' %>
