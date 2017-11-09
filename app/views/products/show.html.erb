@@ -37,11 +37,13 @@
             </label>
           </div>
         </div>
-        <% if @product.quantity.present? && @product.quantity > 0 %>
-          <%= link_to 'Add To Cart', add_to_cart_product_path(@product), :method => :post, class: 'btn btn-primary btn-block mt-5' %>
-        <% else %>
-          <p> The product is out of stock. </p>
-        <% end %>
+        <% if user_signed_in? %>
+          <% if @product.quantity.present? && @product.quantity > 0 %>
+            <%= link_to 'Add To Cart', add_to_cart_product_path(@product), :method => :post, class: 'btn btn-primary btn-block mt-5' %>
+          <% else %>
+            <p> The product is out of stock. </p>
+          <% end %>
+        <% end %>  
       </div>
     </div>
   </div>

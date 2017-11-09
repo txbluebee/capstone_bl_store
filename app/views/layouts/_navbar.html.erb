@@ -6,8 +6,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <div class="d-md-flex justify-content-md-between">
-      <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" href="/products">Products</a>
       </li>
@@ -15,10 +14,11 @@
         <li class="nav-item"><%= link_to 'Manage Products', admin_products_index_path, class: "nav-link mr-auto" %></li>
       <% end %>
     </ul>
-    <ul class="navbar-nav mr-5">
-      <!--=== Shopping Cart ===-->
-      <li class: "nav-link" ><%= link_to '/cart', class: "nav-link" do %> Cart <i class='fa fa-shopping-cart'></i> (<%= current_cart.cart_items.count %>)<% end %></li> 
-      <!-- Sign Up / Sign In -->
+    <ul class="navbar-nav">
+      <% if user_signed_in? %>
+        <!--=== Shopping Cart ===-->
+        <li class: "nav-link" ><%= link_to '/cart', class: "nav-link" do %> Cart <i class='fa fa-shopping-cart'></i> (<%= current_cart.cart_items.count %>)<% end %></li> 
+      <% end %>  
 
       <!--=== User Drop Down Menu ===-->
       <% if user_signed_in? %>
@@ -42,6 +42,6 @@
         <li class="nav-item"><%= link_to 'Sign In', new_user_session_path, class: 'nav-link' %></li>
       <% end %>
     </ul>
-  </div>
 </nav>
+
 
